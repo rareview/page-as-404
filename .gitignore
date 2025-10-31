@@ -1,0 +1,12 @@
+# Build files.
+.DS_Store
+node_modules
+/vendor/
+
+# Ignore temporary OS files
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

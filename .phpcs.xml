@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ruleset name="Page as 404 Default" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+	<description>Page as 404 PHPCS configuration</description>
+
+	<arg name="colors" />
+	<arg value="sp"/>
+	<arg name="extensions" value="php"/>
+	
+	<rule ref="WordPress">
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="Universal.Operators.DisallowShortTernary.Found" />
+		<exclude name="Universal.NamingConventions.NoReservedKeywordParameterNames.functionFound" />
+		<exclude name="WordPress.PHP.DisallowShortTernary.Found" />
+	</rule>
+
+	<rule ref="WordPress.Arrays.MultipleStatementAlignment">
+		<properties>
+			<property name="maxColumn" value="1000"/>
+		</properties>
+	</rule>
+
+	<file>./</file>
+
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	
+	<config name="testVersion" value="8.2-" />
+	<config name="minimum_supported_wp_version" value="6.5" />
+	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
+</ruleset>

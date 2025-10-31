@@ -1,0 +1,30 @@
+{
+    "name": "rv-plugin-starter",
+    "version": "1.0.0",
+    "description": "A lightweight, simple plugin, built by the WP VIP coding standards.",
+    "scripts": {
+        "watch": "webpack --watch",
+        "build": "webpack"
+    },
+    "standard": {
+        "parser": "babel-eslint"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.23.3",
+        "@wordpress/babel-preset-default": "^4.8.0",
+        "babel-eslint": "7.2.2",
+        "babel-loader": "^9.1.3",
+        "css-loader": "^6.10.0",
+        "glob": "^7.1.6",
+        "mini-css-extract-plugin": "^0.11.2",
+        "node-sass": "^7.0.3",
+        "sass": "^1.47.0",
+        "sass-loader": "^12.6.0",
+        "standard-loader": "^6.0.1",
+        "style-loader": "^3.3.4",
+        "webpack": "^5.90.3",
+        "webpack-cli": "^4.10.0",
+        "webpack-manifest-plugin": "^5.0.0",
+        "webpack-fix-style-only-entries": "^0.5.1"
+    }
+}

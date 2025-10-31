@@ -1,0 +1,28 @@
+{
+    "name": "rareview/rv-plugin-starter",
+    "description": "RV Plugin Starter WordPress plugin.",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Rareview",
+            "email": "hellow@rareview.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "RvPluginStarter\\": "",
+            "RvPluginStarter\\Inc\\": "includes/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.0"
+    },
+    "scripts": {
+        "lint": "vendor/bin/phpcs --standard=.phpcs.xml; exit"
+    }
+}
