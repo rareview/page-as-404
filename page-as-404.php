@@ -44,21 +44,6 @@ function pa404_display_activation_notice() {
 add_action( 'admin_notices', 'pa404_display_activation_notice' );
 
 /**
- * If this is the only plugin to be activated, remove default message.
- */
-add_action(
-	'admin_init',
-	function () {
-		if ( is_admin() ) {
-			// Targets single plugin activation.
-			if ( isset( $_GET['activate'] ) && 'true' === $_GET['activate'] ) {
-				unset( $_GET['activate'] );
-			}
-		}
-	}
-);
-
-/**
  * Register setting in Settings → Reading.
  */
 add_action(
@@ -81,12 +66,12 @@ add_action(
 				wp_dropdown_pages(
 					array(
 						'name'              => 'page_as_404_id',
-						'show_option_none'  => '— Default —',
+						'show_option_none'  => esc_html__( '— Default —', 'page-as-404' ),
 						'option_none_value' => '0',
 						'selected'          => esc_attr( get_option( 'page_as_404_id' ) ),
 					)
 				);
-				echo '<p class="description">Select a page to show for 404 errors.</p>';
+				echo '<p class="description">' . esc_html__( 'Select a page to show for 404 errors.', 'page-as-404' ) . '</p>';
 			},
 			'reading',
 			'default',
@@ -336,7 +321,7 @@ add_action( 'admin_footer', 'pa404_admin_assets' );
  * @param array $links The existing plugin action links.
  */
 function pa404_add_settings_link( $links ) {
-	$settings_link = '<a href="options-reading.php?highlight=page-as-404-select">' . __( 'Settings' ) . '</a>';
+	$settings_link = '<a href="options-reading.php?highlight=page-as-404-select">' . __( 'Settings', 'page-as-404' ) . '</a>';
 	array_unshift( $links, $settings_link );
 	return $links;
 }
