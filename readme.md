@@ -1,4 +1,5 @@
-# Wordpress Plugin Starter by Rareview
+# Page As 404
+
 The lightweight and core-friendly way to manage your site&#x27;s 404 response using a standard Page within your site.
 
 ## Description
