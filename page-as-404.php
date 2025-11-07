@@ -1,9 +1,13 @@
 <?php
 /**
- * Plugin Name: Page As 404
+ * Plugin Name: Page as 404
  * Description: Use any published Page as your 404 page. Direct visits return 200, missing URLs return 404 with page content. Excluded from loops, searches, blocks, and sitemaps.
- * Version: 2025.10
- * Author: Rareview
+ * Version:     1.0.0
+ * Author:      Rareview
+ * Author URI:  https://rareview.com/
+ * License:     GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: page-as-404
  *
  * @package Page_As_404
  */
@@ -208,7 +212,7 @@ add_filter(
 		}
 
 		if ( isset( $args['post_type'] ) && ( 'page' === $args['post_type'] || ( is_array( $args['post_type'] ) && in_array( 'page', $args['post_type'], true ) ) ) ) {
-			$args['post__not_in'] = array_merge( $args['post__not_in'] ?? array(), array( $page_id ) );
+			$args['post__not_in'] = array_merge( $args['post__not_in'] ?? array(), array( $page_id ) ); // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
 		}
 
 		return $args;
@@ -232,7 +236,7 @@ add_filter(
 			return $args;
 		}
 
-		$args['post__not_in'] = array_merge( $args['post__not_in'] ?? array(), array( $page_id ) );
+		$args['post__not_in'] = array_merge( $args['post__not_in'] ?? array(), array( $page_id ) ); // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in
 		return $args;
 	},
 	10,

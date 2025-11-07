@@ -23,6 +23,7 @@
         "wp-coding-standards/wpcs": "^3.0"
     },
     "scripts": {
-        "lint": "vendor/bin/phpcs --standard=.phpcs.xml; exit"
+        "lint": "vendor/bin/phpcs --standard=.phpcs.xml; exit",
+        "format": "vendor/bin/phpcbf --standard=.phpcs.xml; exit"
     }
 }

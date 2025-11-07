@@ -4,7 +4,7 @@ Contributors: rareview, s1m0nd
 Tags: 404, 404 error, 404 page, not found, custom 404
 Requires at least: 6.8
 Tested up to: 6.8
-Stable tag: 2025.10
+Stable tag: 1.0.0
 Requires PHP: 8.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
