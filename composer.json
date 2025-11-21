@@ -1,17 +1,17 @@
 {
-    "name": "rareview/rv-plugin-starter",
-    "description": "RV Plugin Starter WordPress plugin.",
+    "name": "rareview/page-as-404",
+    "description": "Use any published Page as your 404 page.",
     "version": "1.0.0",
     "authors": [
         {
             "name": "Rareview",
-            "email": "hellow@rareview.com"
+            "email": "hello@rareview.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "RvPluginStarter\\": "",
-            "RvPluginStarter\\Inc\\": "includes/"
+            "PageAs404\\": "",
+            "PageAs404\\Inc\\": "includes/"
         }
     },
     "config": {

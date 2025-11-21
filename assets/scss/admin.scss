@@ -1,0 +1,27 @@
+/**
+ * Admin styles.
+ *
+ * Styles for admin interface including highlight animation.
+ *
+ * @author Rareview <hello@rareview.com>
+ *
+ * @package Page As 404
+ */
+
+@keyframes rareview-pa404-glow-and-fade {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0, 124, 186, 0.7);
+	}
+	50% {
+		box-shadow: 0 0 20px 10px rgba(0, 124, 186, 0.3);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 124, 186, 0);
+	}
+}
+
+select#rareview_pa404_page_id.rareview-pa404-highlight-setting {
+	animation: rareview-pa404-glow-and-fade 2s ease-out;
+	border-radius: 3px;
+}
+
