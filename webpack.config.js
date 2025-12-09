@@ -8,9 +8,8 @@ const options = { publicPath: '' };
 
 module.exports = {
   entry: {
-    script: './assets/js/script.js',
-    editor: './assets/js/editor.js',
-    styles: './assets/scss/styles.scss'
+    admin: './assets/js/admin.js',
+    'admin-styles': './assets/scss/admin.scss'
   },
   plugins : [
     new RemoveStyleJS( { silent : true } ),
