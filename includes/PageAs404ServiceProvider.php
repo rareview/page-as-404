@@ -37,4 +37,3 @@ class PageAs404ServiceProvider {
 		}
 	}
 }
-

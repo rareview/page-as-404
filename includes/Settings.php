@@ -62,8 +62,8 @@ class Settings {
 	public function render_settings_field() {
 		wp_dropdown_pages(
 			array(
-				'name'              => self::OPTION_NAME,
-				'id'                => self::OPTION_NAME,
+				'name'              => esc_attr( self::OPTION_NAME ),
+				'id'                => esc_attr( self::OPTION_NAME ),
 				'show_option_none'  => esc_html__( '— Default —', 'page-as-404' ),
 				'option_none_value' => '0',
 				'selected'          => esc_attr( get_option( self::OPTION_NAME ) ),
@@ -107,4 +107,3 @@ class Settings {
 		return (int) get_option( self::OPTION_NAME, 0 );
 	}
 }
-

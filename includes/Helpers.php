@@ -39,11 +39,11 @@ class Helpers {
 	 */
 	public static function asset_name( $file ) {
 		if ( ! static::$manifest ) {
-			$directory        = plugin_dir_path( dirname( __FILE__ ) ) . 'dist';
-			$manifest_path    = "{$directory}/manifest.json";
-			
+			$directory     = plugin_dir_path( __DIR__ ) . 'dist';
+			$manifest_path = "{$directory}/manifest.json";
+
 			if ( file_exists( $manifest_path ) ) {
-				static::$manifest = json_decode( file_get_contents( $manifest_path ), true );
+				static::$manifest = json_decode( file_get_contents( $manifest_path ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 			} else {
 				static::$manifest = array();
 			}
@@ -64,7 +64,7 @@ class Helpers {
 	 * @return string Asset url.
 	 */
 	public static function asset_url( $file ) {
-		return set_url_scheme( plugin_dir_url( dirname( __FILE__ ) ) . 'dist/' . self::asset_name( $file ) );
+		return set_url_scheme( plugin_dir_url( __DIR__ ) . 'dist/' . self::asset_name( $file ) );
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Helpers {
 	 * @return string Plugin directory path.
 	 */
 	public static function plugin_dir() {
-		return plugin_dir_path( dirname( __FILE__ ) );
+		return plugin_dir_path( __DIR__ );
 	}
 
 	/**
@@ -82,7 +82,6 @@ class Helpers {
 	 * @return string Plugin directory URL.
 	 */
 	public static function plugin_url() {
-		return plugin_dir_url( dirname( __FILE__ ) );
+		return plugin_dir_url( __DIR__ );
 	}
 }
-

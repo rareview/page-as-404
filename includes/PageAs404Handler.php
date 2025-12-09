@@ -82,16 +82,16 @@ class PageAs404Handler {
 			if ( $custom_404->have_posts() ) {
 				$page_post = $custom_404->posts[0];
 
-				$wp_query->is_404                   = true; // keep 404.
-				$wp_query->is_page                  = true;
-				$wp_query->is_singular              = true;
-				$wp_query->found_posts              = 1;
-				$wp_query->post_count               = 1;
-				$wp_query->posts                    = array( $page_post );
-				$wp_query->post                     = $page_post;
-				$wp_query->queried_object           = $page_post;
-				$wp_query->queried_object_id        = $page_id;
-				$wp_query->is_rareview_page_as_404  = true; // flag for pre_get_posts.
+				$wp_query->is_404                  = true; // keep 404.
+				$wp_query->is_page                 = true;
+				$wp_query->is_singular             = true;
+				$wp_query->found_posts             = 1;
+				$wp_query->post_count              = 1;
+				$wp_query->posts                   = array( $page_post );
+				$wp_query->post                    = $page_post;
+				$wp_query->queried_object          = $page_post;
+				$wp_query->queried_object_id       = $page_id;
+				$wp_query->is_rareview_page_as_404 = true; // flag for pre_get_posts.
 
 				setup_postdata( $page_post );
 
@@ -191,4 +191,3 @@ class PageAs404Handler {
 		return $robots;
 	}
 }
-

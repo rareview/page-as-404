@@ -1,9 +1,9 @@
 === Page as 404 ===
 
-Contributors: rareview, s1m0nd
+Contributors: rareview, s1m0nd, maxinacube, pratikbarvaliya
 Tags: 404, 404 error, 404 page, not found, custom 404
 Requires at least: 6.8
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: 1.0.0
 Requires PHP: 8.3
 License: GPLv2 or later
