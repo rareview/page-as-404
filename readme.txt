@@ -23,6 +23,8 @@ By using WordPress's built-in Pages feature, you can design and serve a feature-
 
 Just activate this plugin, then select your desired Page from the dropdown list on the Settings &amp;rarr; Reading page.
 
+Developer documentation and source code are available on GitHub.
+
 == Installation ==
 
 1. Upload and activate the plugin in the usual way
@@ -30,6 +32,29 @@ Just activate this plugin, then select your desired Page from the dropdown list 
 1. Go to your site&#x27;s Settings &amp;rarr; Reading page
 1. Choose your Not Found page from the dropdown list.
 1. Save your updated Settings.
+
+== Development ==
+
+This plugin uses modern build tooling for development.
+
+Source code is publicly available at:
+https://github.com/rareview/page-as-404
+
+### Build process
+
+JavaScript and CSS assets are compiled for distribution.  
+The uncompiled source code and build instructions can be found in the repository above.
+
+Typical development workflow:
+
+- `composer install`
+- `composer lint`
+- `composer format`
+- `npm install`
+- `npm run watch` or `npm run build`
+
+PHP dependencies are managed with Composer for development purposes only.  
+The distributed plugin includes only the compiled assets required at runtime.
 
 == Frequently Asked Questions ==
 

@@ -1,0 +1,16 @@
+.git
+.github
+.gitignore
+
+node_modules
+vendor
+collateral
+renovate.json
+
+composer.lock
+package-lock.json
+
+webpack.config.js
+
+*.map
+.DS_Store
