@@ -1,12 +1,14 @@
 .git
 .github
 .gitignore
+.distignore
+.phpcs.xml
 
 node_modules
 vendor
-collateral
+.wordpress-org
 renovate.json
-
+readme.md
 composer.lock
 package-lock.json
 
