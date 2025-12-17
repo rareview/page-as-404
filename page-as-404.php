@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Page as 404
  * Description: Use any published Page as your 404 page. Direct visits return 200, missing URLs return 404 with page content. Excluded from loops, searches, blocks, and sitemaps.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Rareview
  * Author URI:  https://rareview.com/
  * License:     GPL v2 or later
