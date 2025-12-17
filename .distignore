@@ -1,6 +1,8 @@
 .git
 .github
 .gitignore
+.distignore
+.phpcs.xml
 
 node_modules
 vendor
