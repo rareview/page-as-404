@@ -12,7 +12,7 @@ Out of the box, WordPress treats 404 pages as a technical matter, with themes en
 
 By using WordPress's built-in Pages feature, you can design and serve a feature-rich 404 page, making full use of WordPress content and navigation blocks. And you can edit and maintain it as easily as any other Page.
 
-Just activate this plugin, then select your desired page from the dropdown list on the Settings → Reading page.
+Just activate this plugin, then select your desired Page from the dropdown list on the Settings → Reading page.
 
 ## Installation
 
