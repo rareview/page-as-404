@@ -1,6 +1,6 @@
 # Page As 404
 
-The lightweight and core-friendly way to manage your site&#x27;s 404 response using a standard Page within your site.
+The lightweight and core-friendly way to manage your site's 404 response using a standard Page within your site.
 
 ## Description
 
@@ -18,7 +18,7 @@ Just activate this plugin, then select your desired Page from the dropdown list 
 
 1. Upload and activate the plugin in the usual way
 1. Create and publish a Not Found page.
-1. Go to your site&#x27;s Settings → Reading page
+1. Go to your site's Settings → Reading page
 1. Choose your Not Found page from the dropdown list.
 1. Save your updated Settings.
 
@@ -38,7 +38,7 @@ A standard 404 error code is served, unless you access the URL of the Page itsel
 
 **Where is the Settings page for this plugin?**
 
-There is no Settings page; just an extra dropdown on the existing Settings > Reading page. The 404 Page itself exists as a normal Page, and can be found among your site's Pages.
+There is no Settings page; just an extra dropdown on the existing Settings → Reading page. The 404 Page itself exists as a normal Page, and can be found among your site's Pages.
 
 **What happens with my theme's 404 template?**
 
