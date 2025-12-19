@@ -10,7 +10,3 @@ node_modules
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Ignore IDE files
-.idea/
-.vscode/
