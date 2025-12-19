@@ -4,7 +4,7 @@ Contributors: rareview, s1m0nd, maxinacube, pratikbarvaliya
 Tags: 404, 404 error, 404 page, not found, custom 404
 Requires at least: 6.2
 Tested up to: 6.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -42,7 +42,7 @@ https://github.com/rareview/page-as-404
 
 ### Build process
 
-JavaScript and CSS assets are compiled for distribution.  
+JavaScript and CSS assets are compiled for distribution.
 The uncompiled source code and build instructions can be found in the repository above.
 
 Typical development workflow:
@@ -53,7 +53,7 @@ Typical development workflow:
 - `npm install`
 - `npm run watch` or `npm run build`
 
-PHP dependencies are managed with Composer for development purposes only.  
+PHP dependencies are managed with Composer for development purposes only.
 The distributed plugin includes only the compiled assets required at runtime.
 
 == Frequently Asked Questions ==
@@ -83,6 +83,10 @@ Once a Page has been selected, any calls to the 404 template are intercepted, an
 This plugin keeps things simple and clutter-free. There are [numerous plugins in the WordPress repository](https://wordpress.org/plugins/search/404/) already, which add functionality to redirect users, log details, or send alerts in the event of a 404 error. If you are looking for extra features, you will probably find them there.
 
 == Changelog ==
+
+= 1.0.2 =
+
+Fixed readme unicode characters issue
 
 = 1.0.1 =
 
