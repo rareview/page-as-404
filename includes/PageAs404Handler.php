@@ -45,10 +45,10 @@ class PageAs404Handler {
 		// Normalize requested path.
 		$request_uri    = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 		$requested_path = $request_uri ? trim( wp_parse_url( $request_uri, PHP_URL_PATH ), '/' ) : '';
-		$page_slug      = get_post_field( 'post_name', $page_id );
+        $requested_id   = url_to_postid( home_url( $requested_path ) );
 
 		// Case 1: Direct visit to the 404 page → serve 200.
-		if ( $requested_path === $page_slug ) {
+		if ( $requested_id === $page_id ) {
 			$page_post = get_post( $page_id );
 			if ( ! $page_post ) {
 				return;
