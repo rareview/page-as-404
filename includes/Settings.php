@@ -14,8 +14,26 @@ namespace PageAs404\Inc;
  */
 class Settings {
 
+    /**
+     * Option name for the 404 page ID.
+     *
+     * @var string
+     */
 	const OPTION_NAME = 'rareview_pa404_page_id';
-	const PREFIX      = 'rareview-pa404';
+
+    /**
+     * Prefix.
+     *
+     * @var string
+     */
+	const PREFIX = 'rareview-pa404';
+
+    /**
+     * Page ID.
+     *
+     * @var int|null
+     */
+    private static $page_id = null;
 
 	/**
 	 * Constructor.
@@ -66,7 +84,7 @@ class Settings {
 				'id'                => esc_attr( self::OPTION_NAME ),
 				'show_option_none'  => esc_html__( '— Default —', 'page-as-404' ),
 				'option_none_value' => '0',
-				'selected'          => esc_attr( get_option( self::OPTION_NAME ) ),
+				'selected'          => esc_attr( self::get_page_id() ),
 			)
 		);
 		echo '<p class="description">' . esc_html__( 'Select a page to show for 404 errors.', 'page-as-404' ) . '</p>';
@@ -92,7 +110,7 @@ class Settings {
 	 * @return array Modified post states.
 	 */
 	public function display_post_states( $states, $post ) {
-		if ( (int) get_option( self::OPTION_NAME ) === $post->ID ) {
+		if ( (int) self::get_page_id() === $post->ID ) {
 			$states[ self::PREFIX ] = __( '404 Page', 'page-as-404' );
 		}
 		return $states;
@@ -103,7 +121,11 @@ class Settings {
 	 *
 	 * @return int
 	 */
-	public static function get_page_id() {
-		return (int) get_option( self::OPTION_NAME, 0 );
-	}
+    public static function get_page_id() {
+        if ( null === self::$page_id ) {
+            self::$page_id = (int) get_option( self::OPTION_NAME, 0 );
+        }
+
+        return self::$page_id;
+    }
 }
