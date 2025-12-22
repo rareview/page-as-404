@@ -72,12 +72,31 @@ class Settings {
 		);
 	}
 
+    /**
+     * Helper callback function to filter out password-protected pages.
+     *
+     * @param array $pages Array of page objects.
+     *
+     * @return array
+     */
+    public function exclude_password_protected( $pages ) {
+        return array_filter(
+            $pages,
+            static function ( $page ) {
+                return empty( $page->post_password );
+            }
+        );
+    }
+
 	/**
 	 * Render the settings field.
 	 *
 	 * @return void
 	 */
 	public function render_settings_field() {
+
+        add_filter( 'get_pages', array( $this, 'exclude_password_protected' ) );
+
 		wp_dropdown_pages(
 			array(
 				'name'              => esc_attr( self::OPTION_NAME ),
@@ -87,6 +106,9 @@ class Settings {
 				'selected'          => esc_attr( self::get_page_id() ),
 			)
 		);
+
+        remove_filter( 'get_pages', array( $this, 'exclude_password_protected' ) );
+
 		echo '<p class="description">' . esc_html__( 'Select a page to show for 404 errors.', 'page-as-404' ) . '</p>';
 	}
 
