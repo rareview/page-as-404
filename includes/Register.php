@@ -53,12 +53,12 @@ class Register {
 		);
 
 		// Enqueue admin script.
-		wp_enqueue_script(
-			self::PREFIX . '-admin-script',
-			Helpers::asset_url( 'admin.js' ),
-			array(),
-			Helpers::version(),
-			true
-		);
+//		wp_enqueue_script(
+//			self::PREFIX . '-admin-script',
+//			Helpers::asset_url( 'admin.js' ),
+//			array(),
+//			Helpers::version(),
+//			true
+//		);
 	}
 }

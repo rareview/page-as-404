@@ -9,18 +9,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-	const params = new URLSearchParams(window.location.search);
-	if (params.get('highlight') === 'rareview-pa404-select') {
-		const element = document.getElementById('rareview_pa404_page_id');
-		if (element) {
-			element.classList.add('rareview-pa404-highlight-setting');
-			setTimeout(() => {
-				element.classList.remove('rareview-pa404-highlight-setting');
-				const url = new URL(window.location);
-				url.searchParams.delete('highlight');
-				window.history.replaceState({}, document.title, url);
-			}, 2000);
-		}
-	}
+	// Uncomment admin.js loading script in the Register.php file -> enqueue_admin_assets function, to enable this script.
 });
 
