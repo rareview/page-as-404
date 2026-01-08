@@ -14,8 +14,40 @@ namespace PageAs404\Inc;
  */
 class Settings {
 
+    /**
+     * Option name for the 404 page ID.
+     *
+     * @var string
+     */
 	const OPTION_NAME = 'rareview_pa404_page_id';
-	const PREFIX      = 'rareview-pa404';
+
+    /**
+     * Prefix.
+     *
+     * @var string
+     */
+	const PREFIX = 'rareview-pa404';
+
+    /**
+     * Highlight param.
+     *
+     * @var string
+     */
+    const HIGHLIGHT_PARAM = self::PREFIX . '-select';
+
+    /**
+     * Highlight CSS class.
+     *
+     * @var string
+     */
+    const HIGHLIGHT_CSS_CLASS = self::PREFIX . '-highlight-setting';
+
+    /**
+     * Page ID.
+     *
+     * @var int|null
+     */
+    private static $page_id = null;
 
 	/**
 	 * Constructor.
@@ -54,32 +86,85 @@ class Settings {
 		);
 	}
 
+    /**
+     * Helper callback function to filter out password-protected pages.
+     *
+     * @param array $pages Array of page objects.
+     *
+     * @return array
+     */
+    public function exclude_password_protected( $pages ) {
+        return array_filter(
+            $pages,
+            static function ( $page ) {
+                return empty( $page->post_password );
+            }
+        );
+    }
+
 	/**
 	 * Render the settings field.
 	 *
 	 * @return void
 	 */
-	public function render_settings_field() {
-		wp_dropdown_pages(
-			array(
-				'name'              => esc_attr( self::OPTION_NAME ),
-				'id'                => esc_attr( self::OPTION_NAME ),
-				'show_option_none'  => esc_html__( '— Default —', 'page-as-404' ),
-				'option_none_value' => '0',
-				'selected'          => esc_attr( get_option( self::OPTION_NAME ) ),
-			)
-		);
-		echo '<p class="description">' . esc_html__( 'Select a page to show for 404 errors.', 'page-as-404' ) . '</p>';
-	}
+    public function render_settings_field() {
 
-	/**
+        $highlight = (
+            isset( $_GET['highlight'] ) &&
+            self::HIGHLIGHT_PARAM === $_GET['highlight']
+        );
+
+        if ( $highlight ) {
+            add_filter( 'wp_dropdown_pages', array( $this, 'add_highlight_class_to_dropdown' ), 10, 2 );
+        }
+
+        add_filter( 'get_pages', array( $this, 'exclude_password_protected' ) );
+
+        wp_dropdown_pages(
+            array(
+                'name'              => esc_attr( self::OPTION_NAME ),
+                'id'                => esc_attr( self::OPTION_NAME ),
+                'show_option_none'  => esc_html__( '— Default —', 'page-as-404' ),
+                'option_none_value' => '0',
+                'selected'          => esc_attr( self::get_page_id() ),
+            )
+        );
+
+        remove_filter( 'get_pages', array( $this, 'exclude_password_protected' ) );
+
+        if ( $highlight ) {
+            remove_filter( 'wp_dropdown_pages', array( $this, 'add_highlight_class_to_dropdown' ), 10 );
+        }
+
+        echo '<p class="description">' . esc_html__( 'Select a page to show for 404 errors.', 'page-as-404' ) . '</p>';
+    }
+
+    /**
+     * Highlight CSS class callback function.
+     *
+     * @return string
+     */
+    public function add_highlight_class_to_dropdown( $output, $args ) {
+
+        if ( self::OPTION_NAME !== ( $args['name'] ?? '' ) ) {
+            return $output;
+        }
+
+        return str_replace(
+            '<select',
+            '<select class="' . self::HIGHLIGHT_CSS_CLASS . '"',
+            $output
+        );
+    }
+
+    /**
 	 * Add a Settings link on the plugins page.
 	 *
 	 * @param array $links The existing plugin action links.
 	 * @return array Modified plugin action links.
 	 */
 	public function add_settings_link( $links ) {
-		$settings_link = '<a href="options-reading.php?highlight=' . self::PREFIX . '-select">' . __( 'Settings', 'page-as-404' ) . '</a>';
+		$settings_link = '<a href="options-reading.php?highlight=' . self::HIGHLIGHT_PARAM . '">' . __( 'Settings', 'page-as-404' ) . '</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
 	}
@@ -92,7 +177,7 @@ class Settings {
 	 * @return array Modified post states.
 	 */
 	public function display_post_states( $states, $post ) {
-		if ( (int) get_option( self::OPTION_NAME ) === $post->ID ) {
+		if ( (int) self::get_page_id() === $post->ID ) {
 			$states[ self::PREFIX ] = __( '404 Page', 'page-as-404' );
 		}
 		return $states;
@@ -103,7 +188,11 @@ class Settings {
 	 *
 	 * @return int
 	 */
-	public static function get_page_id() {
-		return (int) get_option( self::OPTION_NAME, 0 );
-	}
+    public static function get_page_id() {
+        if ( null === self::$page_id ) {
+            self::$page_id = (int) get_option( self::OPTION_NAME, 0 );
+        }
+
+        return self::$page_id;
+    }
 }
