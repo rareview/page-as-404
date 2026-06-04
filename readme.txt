@@ -4,7 +4,7 @@ Contributors: rareview, s1m0nd, maxinacube, pratikbarvaliya, tahireu
 Tags: 404, 404 error, 404 page, not found, custom 404
 Requires at least: 6.2
 Tested up to: 7.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -83,6 +83,10 @@ Once a Page has been selected, any calls to the 404 template are intercepted, an
 This plugin keeps things simple and clutter-free. There are [numerous plugins in the WordPress repository](https://wordpress.org/plugins/search/404/) already, which add functionality to redirect users, log details, or send alerts in the event of a 404 error. If you are looking for extra features, you will probably find them there.
 
 == Changelog ==
+
+= 1.1.1 =
+
+Add check for singular template redirect, filter archive title for selected 404 page
 
 = 1.1.0 =
 
