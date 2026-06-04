@@ -23,6 +23,7 @@ class PageAs404Handler {
 		add_filter( 'rest_post_query', array( $this, 'exclude_from_rest_query' ), 10, 1 );
 		add_filter( 'wp_sitemaps_posts_query_args', array( $this, 'exclude_from_sitemap' ), 10, 2 );
 		add_filter( 'wp_robots', array( $this, 'add_noindex_robots' ) );
+		add_filter( 'get_the_archive_title', array( $this, 'modify_archive_title' ) );
 	}
 
 	/**
@@ -102,7 +103,15 @@ class PageAs404Handler {
 
 				setup_postdata( $page_post );
 
-				$template = get_page_template() ? get_page_template() : get_index_template();
+				/**
+				 * In this order, try to:
+				 * 1. get_page_template()
+				 * 2. get_singular_template()
+				 * 3. get_index_template()
+				 */
+			
+				$template = get_page_template() ?: get_singular_template() ?: get_index_template();
+
 				include $template;
 				wp_reset_postdata();
 				exit;
@@ -196,5 +205,21 @@ class PageAs404Handler {
 			$robots['noindex'] = true;
 		}
 		return $robots;
+	}
+
+	/**
+	 * Modify archive title to prevent "Archives" title in Twenty Twenty and
+	 * other themes that default to index.php for a page template where
+	 * get_the_archive_title is called without checking if it's an archive.
+	 * 
+	 * @param string $title The original archive title.
+	 * @return string Modified archive title.
+	 */
+	public function modify_archive_title( $title ) {
+		if ( is_page() && get_queried_object_id() === Settings::get_page_id() ) {
+			return false;
+		}
+
+		return $title;
 	}
 }
