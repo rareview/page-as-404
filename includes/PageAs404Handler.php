@@ -68,7 +68,8 @@ class PageAs404Handler {
 			$wp_query->queried_object    = $page_post;
 			$wp_query->queried_object_id = $page_id;
 
-			setup_postdata( $page_post );
+            // reset_postdata() sets global $post from the current query, which is required for the page template to be recognized.
+			$wp_query->reset_postdata();
 			status_header( 200 );
 			return;
 		}
@@ -101,13 +102,17 @@ class PageAs404Handler {
 				$wp_query->queried_object_id       = $page_id;
 				$wp_query->is_rareview_page_as_404 = true; // flag for pre_get_posts.
 
-				setup_postdata( $page_post );
+                // reset_postdata() sets global $post from the current query, which is required for the page template to be recognized..
+				$wp_query->reset_postdata();
 
 				/**
 				 * In this order, try to:
 				 * 1. get_page_template()
 				 * 2. get_singular_template()
 				 * 3. get_index_template()
+				 *
+				 * reset_postdata() is required so get_page_template_slug() can read
+				 * the selected page template via the global $post object.
 				 */
 			
 				$template = get_page_template() ?: get_singular_template() ?: get_index_template();
