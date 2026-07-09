@@ -52,7 +52,7 @@ class PageAs404Handler {
 		// Case 1: Direct visit to the 404 page → serve 200.
 		if (
             $requested_id === $page_id || // Prefer ID check.
-            ! empty( $page_post->post_password ) && $requested_path === $page_post->post_name // For password protected posts, it must be slug check.
+            empty( $page_post->post_password ) && $requested_path === $page_post->post_name // For password protected posts, it must be slug check.
         ) {
 			if ( ! $page_post ) {
 				return;
